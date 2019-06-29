@@ -7,11 +7,14 @@
     </mt-swipe>
     <div class="mui-content">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
-        <li v-for="item in menuList" :key="item.id" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-          <a href="#">
-            <span class="mui-icon mui-icon-home" :class="item.icon"></span>
+        <li
+          v-for="item in menuList"
+          :key="item.data"
+          class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link :to="item.to">
+            <img :src="item.src" alt="" class="myIcon">
             <div class="mui-media-body">{{item.data}}</div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -20,25 +23,57 @@
 
 <script>
 export default {
-  data:function(){
+  data: function() {
     return {
-      menuList:[
-        {id:1,data:"新闻资讯",icon:"mui-icon-extra mui-icon-extra-new"},
-        {id:2,data:"图片分享",icon:"mui-icon-extra mui-icon-extra-share"},
-        {id:4,data:"商品购买",icon:"mui-icon-extra mui-icon-extra-prech"},
-        {id:5,data:"留言反馈",icon:"mui-icon mui-icon-chat"},
-        {id:5,data:"视频专区",icon:"mui-icon mui-icon-eye"},
-        {id:6,data:"联系我们",icon:"mui-icon-extra mui-icon-extra-peoples"},
+      menuList: [
+        { id: 1, data: "新闻资讯", 
+          icon: "mui-icon-extra mui-icon-extra-news",
+          src:"../../images/newsIcon.jpg",
+          to:"/home/newsList",
+        },
+        {
+          id: 2,
+          data: "图片分享",
+          icon: "mui-icon-extra mui-icon-extra-share",
+          src:"../../images/kobe.jpg",
+          to:"/home/sharePictures",
+        },
+        {
+          id: 3,
+          data: "商品购买",
+          icon: "mui-icon-extra mui-icon-extra-prech",
+          src:"../../images/MJ.jpg",
+          to:"/home/shopping",
+        },
+        { id: 4, data: "留言反馈", 
+          icon: "mui-icon mui-icon-chat",
+          src:"../../images/zhku.jpg" ,
+          to:"/home/newList",
+        },
+        { id: 5, data: "视频专区", 
+          icon: "mui-icon mui-icon-eye",
+          src:"../../images/road.jpg" ,
+          to:"/home/newList",
+        },
+        {
+          id: 6,
+          data: "联系我们",
+          icon: "mui-icon-extra mui-icon-extra-peoples",
+          src:"../../images/newsIcon.jpg",
+          to:"/home/newList",
+        }
       ]
-    }
-  }
+    };
+  },
+  methods:{
 
+  },
 };
 </script>
 
 <style scoped>
-.active{
-  color:red;
+.active {
+  color: red;
 }
 .mint-swipe {
   height: 200px;
@@ -56,19 +91,30 @@ export default {
 .mint-swipe-item:nth-child(3) {
   background-image: url(../../images/zhku.jpg);
 }
-.mui-grid-view.mui-grid-9{
+.mui-grid-view.mui-grid-9 {
   margin-top: 0;
-  background-color: #F0F0F5;
+  background-color: #f0f0f5;
   border: none;
 }
-.mui-grid-view{
-  border:none;
+.mui-grid-view {
+  border: none;
 }
-.mui-media-body{
+.mui-media-body {
   font-size: 12px !important;
 }
 .mui-grid-view.mui-grid-9 .mui-table-view-cell {
   border: none;
+}
+.myIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.newsIcon{
+  background-image: url(../../images/newsIcon.jpg);
 }
 </style>
 

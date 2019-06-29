@@ -1,5 +1,5 @@
 <template>
-    <div class="padTop">
+    <div>
         <h1>在下就是VIP</h1>
     </div>
 </template>

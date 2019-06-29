@@ -1,5 +1,5 @@
 <template>
-    <div class="padTop">
+    <div>
         <h1>买买买吧小伙子</h1>
     </div>
 </template>

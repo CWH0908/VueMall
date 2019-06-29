@@ -1,5 +1,5 @@
 <template>
-    <div class="padTop">
+    <div>
         <h1>给的再多，不如懂我</h1>
     </div>
 </template>

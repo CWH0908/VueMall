@@ -7,14 +7,20 @@ import vip from "../src/components/tabbarPage/vip.vue";
 import shopCar from "../src/components/tabbarPage/shopCar.vue";
 import search from "../src/components/tabbarPage/search.vue";
 
+//导入新闻列表子组件
+import newsList from "../src/components/news/newsList.vue"
+
 Vue.use(VueRouter);
 //创建路由对象
 var router =new VueRouter({
     routes:[
+        {path:"/",redirect:"/home"},
         {path:"/home",component:home},
         {path:"/vip",component:vip},
         {path:"/shopCar",component:shopCar},
-        {path:"/search",component:search}
+        {path:"/search",component:search},
+
+        {path:"/home/newsList",component:newsList}, 
     ],
     linkActiveClass:'highLight'
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function strat(data){
+        var pro=new Promise(function(resolve,reject){
+            setTimeout(function(){
+                if(data==0){
+                    reject("错误数据：0");
+                }else{
+                    resolve("正确数据：1");
+                }
+            },3000);
+        }); 
+        return pro;//返回一个promise对象 
+    }
+
+    var test=strat(0);//调用函数
+    test.then(function(data){
+        console.log("成功的回调函数"+data);
+    
+    },function(data){
+        console.log("失败的回调函数"+data);
+    });
+
+</script>
+</html>
