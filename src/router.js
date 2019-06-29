@@ -8,7 +8,10 @@ import shopCar from "../src/components/tabbarPage/shopCar.vue";
 import search from "../src/components/tabbarPage/search.vue";
 
 //导入新闻列表子组件
-import newsList from "../src/components/news/newsList.vue"
+import newsList from "../src/components/news/newsList.vue";
+
+//导入新闻详情子组件
+import newsInfo from "../src/components/news/newsInfo.vue";
 
 Vue.use(VueRouter);
 //创建路由对象
@@ -21,6 +24,7 @@ var router =new VueRouter({
         {path:"/search",component:search},
 
         {path:"/home/newsList",component:newsList}, 
+        {path:"/home/newsInfo/:id",component:newsInfo}, 
     ],
     linkActiveClass:'highLight'
 

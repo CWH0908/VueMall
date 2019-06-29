@@ -11,7 +11,7 @@
     </div>
 
     <!-- 底部导航栏 -->
-    <nav class="mui-bar mui-bar-tab" style="position:absolute">
+    <nav class="mui-bar mui-bar-tab" style="position:fixed">
       <router-link to="/home" tag="a" class="mui-tab-item">
         <!-- <a class="mui-tab-item mui-active" href="#tabbar"> 原来MUI的组件结构-->
         <span class="mui-icon mui-icon-home"></span>
@@ -43,6 +43,7 @@ export default {};
 <style scoped>
 .middenPart {
   padding-top: 40px;
+  padding-bottom: 50px;
 }
 .highLight {
   color: red;

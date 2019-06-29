@@ -2,7 +2,7 @@
   <div>
     <ul class="mui-table-view" v-for="item in newsListMessage" :key="item.id">
       <li class="mui-table-view-cell mui-media">
-        <a href="javascript:;">
+        <router-link :to="'/home/newsInfo/'+item.id">
           <img class="mui-media-object mui-pull-left" :src="item.src">
           <div class="mui-media-body">
             <p class="mui-ellipsis">{{item.message}}</p>
@@ -11,7 +11,7 @@
               <span class="clickCount">点击次数：{{item.clickCount}}</span>
             </div>
           </div>
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
