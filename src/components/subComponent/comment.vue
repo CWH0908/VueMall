@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { Toast } from "mint-ui";
 export default {
   data: function() {
     return {
@@ -64,13 +65,17 @@ export default {
   },
   methods: {
     addComment() {
-      this.comment_list.push({
-        id: this.idCount + 1,
-        name: "匿名用户",
-        addtime: new Date(),
-        comment_body: this.commentMessage
-      });
-      this.commentMessage = "";
+      if (this.commentMessage == "") {
+        Toast("请输入评论内容");
+      } else {
+        this.comment_list.push({
+          id: this.idCount + 1,
+          name: "匿名用户",
+          addtime: new Date(),
+          comment_body: this.commentMessage
+        });
+        this.commentMessage = "";
+      }
     },
     addMore() {
       this.comment_list.push(this.list_addMore);
@@ -96,12 +101,12 @@ textarea {
   color: white;
   font-size: 12px;
   padding: 0 4px;
-  line-height: 35px;
+  line-height: 20px;
 }
 .comment_body {
   font-size: 12px;
   text-indent: 2em;
-  line-height: 35px;
+  line-height: 20px;
 }
 .v-enter,
 .v-leave-to {

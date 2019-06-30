@@ -5,18 +5,22 @@ import Vue from '../node_modules/vue/dist/vue.js' //导入vue
 import VueRouter from "vue-router";//导入Vue路由
 
 import MintUI from 'mint-ui' //导入mint-ui
+Vue.use(MintUI);
 import 'mint-ui/lib/style.css'
 
 import './lib/mui/css/mui.css'  //导入MUI
+
 import app from '../src/App.vue'
 
 import './lib/mui/css/icons-extra.css' //导入MUI的图标文件
 
-import { Header,Swipe, SwipeItem,Button } from 'mint-ui';//导入Mint-UI的Header组件、轮播图、按钮
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// import { Header,Swipe, SwipeItem,Button,Lazyload } from 'mint-ui';//按需导入Mint-UI的Header组件、轮播图、按钮，懒加载
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// Vue.use(Lazyload);
+
 
 import router from '../src/router' //导入路由js
 

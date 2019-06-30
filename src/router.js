@@ -13,6 +13,12 @@ import newsList from "../src/components/news/newsList.vue";
 //导入新闻详情子组件
 import newsInfo from "../src/components/news/newsInfo.vue";
 
+//导入分享图片子组件
+import sharePictures from "../src/components/sharePictures.vue";
+
+//导入图片详情子组件
+import pictureInfo from "../src/components/pictureInfo.vue"
+
 Vue.use(VueRouter);
 //创建路由对象
 var router =new VueRouter({
@@ -25,6 +31,10 @@ var router =new VueRouter({
 
         {path:"/home/newsList",component:newsList}, 
         {path:"/home/newsInfo/:id",component:newsInfo}, 
+
+        {path:"/home/sharePictures",component:sharePictures}, //图片列表
+        {path:"/home/pictureInfo/:id",component:pictureInfo},//图片详情
+
     ],
     linkActiveClass:'highLight'
 
