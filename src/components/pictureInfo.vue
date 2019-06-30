@@ -5,16 +5,23 @@
       <span class="publishTime">发布时间：{{itemData.infoTime}}</span>
       <span class="clickCount">点击次数：{{itemData.infoClickCount}}</span>
     </div>
+
     <hr />
-    <img :src="itemData.src" />
+    <!-- 缩略图插件 -->
+    <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
+
     <p class="infoMessage">{{itemData.message}}</p>
     <comment></comment>
   </div>
 </template>
 
 <script>
-import { Toast } from "mint-ui";
-import comment from "../components/subComponent/comment.vue";
+import comment from "../components/subComponent/comment.vue"; //导入评论组件
+
+import Vue from "../../node_modules/vue/dist/vue.js";
+import VuePreview from "vue-preview"; //导入缩略图组件
+Vue.use(VuePreview);
+
 export default {
   data: function() {
     return {
@@ -255,26 +262,51 @@ export default {
             "若能掬起一捧月光，我选择最柔和的；若能采来香山红叶，我选择最艳丽的；若选择不是最好，但我的选择，我相信"
         }
       ],
-      //   infoTitle: "",
-      //   infoMessage: "",
-      //   src: "",
-      //   infoTime: "",
-      //   infoClickCount: 0
-      itemData: {} //用于存放匹配的数据对象
+      itemData: {}, //用于存放匹配的数据对象
+      slide1: [
+        {
+          src:
+            "https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg", //打开的大图
+          msrc:
+            "https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg", //缩略图
+          alt: "picture1",
+          title: "Image Caption 1",
+          w: 600,
+          h: 400
+        },
+        {
+          src:
+            "https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg",
+          msrc:
+            "https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg",
+          alt: "picture2",
+          title: "Image Caption 2",
+          w: 1200,
+          h: 900
+        },
+        {
+          src: "../images/MJ.jpg",
+          msrc: "../images/MJ_m.jpg",
+          alt: "picture3",
+          title: "Image Caption 3",
+          w: 1200,
+          h: 900
+        }
+      ]
     };
   },
   created() {
     this.pictureURL.forEach(item => {
       if (item.id == this.id) {
-        //对应的详情信息
-        this.itemData=item;
-        // this.infoTitle = item.title;
-        // this.infoMessage = item.message;
-        // this.src = item.src;
-        // this.infoTime = item.infoTime;
-        // this.infoClickCount = item.infoClickCount;
+        //对应的详情信息对象
+        this.itemData = item;
       }
     });
+  },
+  methods: {
+    handleClose() {
+      console.log("close event");
+    }
   },
   components: {
     comment: comment
@@ -309,6 +341,10 @@ img {
   color: black;
   text-indent: 2em;
 }
+/* .smallPicture img{
+    width: 100px;
+    height: 100px;
+} */
 </style>
 
 

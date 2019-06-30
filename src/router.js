@@ -19,6 +19,9 @@ import sharePictures from "../src/components/sharePictures.vue";
 //导入图片详情子组件
 import pictureInfo from "../src/components/pictureInfo.vue"
 
+//导入商品列表组件
+import shopping from "../src/components/shoppingCommnet/shopping.vue"
+
 Vue.use(VueRouter);
 //创建路由对象
 var router =new VueRouter({
@@ -35,6 +38,7 @@ var router =new VueRouter({
         {path:"/home/sharePictures",component:sharePictures}, //图片列表
         {path:"/home/pictureInfo/:id",component:pictureInfo},//图片详情
 
+        {path:"/home/shopping",component:shopping},//商品列表页面
     ],
     linkActiveClass:'highLight'
 
