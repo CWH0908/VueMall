@@ -1,8 +1,4 @@
-# cwh 的 vue 项目
-
-## 到处都是坑呐！~
-
-#vsconde 侧边栏默认工具咋没打开的啊
+# cwh 的 vue 商城项目
 
 ## 传统方式提交项目到github
 1. git add .
