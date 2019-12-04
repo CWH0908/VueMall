@@ -1,19 +1,22 @@
 <template>
   <div>
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
+    <!-- <mt-swipe :auto="4000">
       <mt-swipe-item></mt-swipe-item>
       <mt-swipe-item></mt-swipe-item>
       <mt-swipe-item></mt-swipe-item>
-    </mt-swipe>
+    </mt-swipe>-->
+    <lunbotu :getImg="getImg"></lunbotu>
+
     <div class="mui-content">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li
           v-for="item in menuList"
           :key="item.data"
-          class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"
+        >
           <router-link :to="item.to">
-            <img :src="item.src" alt="" class="myIcon">
+            <img :src="item.src" alt class="myIcon" />
             <div class="mui-media-body">{{item.data}}</div>
           </router-link>
         </li>
@@ -23,52 +26,83 @@
 </template>
 
 <script>
+import axios from "axios";
+
+import lunbotu from "../../components/lunbotu.vue"; //导入轮播图组件
+
 export default {
+  created() {
+    // this.requestImg();//请求图片
+    this.requestImg();
+  },
   data: function() {
     return {
       menuList: [
-        { id: 1, data: "新闻资讯", 
+        {
+          id: 1,
+          data: "新闻资讯",
           icon: "mui-icon-extra mui-icon-extra-news",
-          src:"../../images/newsIcon.jpg",
-          to:"/home/newsList",
+          src: "../../images/newsIcon.jpg",
+          to: "/home/newsList"
         },
         {
           id: 2,
           data: "图片分享",
           icon: "mui-icon-extra mui-icon-extra-share",
-          src:"../../images/kobe.jpg",
-          to:"/home/sharePictures",
+          src: "../../images/kobe.jpg",
+          to: "/home/sharePictures"
         },
         {
           id: 3,
           data: "商品购买",
           icon: "mui-icon-extra mui-icon-extra-prech",
-          src:"../../images/MJ.jpg",
-          to:"/home/shopping",
+          src: "../../images/MJ.jpg",
+          to: "/home/shopping"
         },
-        { id: 4, data: "留言反馈", 
+        {
+          id: 4,
+          data: "留言反馈",
           icon: "mui-icon mui-icon-chat",
-          src:"../../images/zhku.jpg" ,
-          to:"/home/newList",
+          src: "../../images/zhku.jpg",
+          to: "/home/newList"
         },
-        { id: 5, data: "视频专区", 
+        {
+          id: 5,
+          data: "视频专区",
           icon: "mui-icon mui-icon-eye",
-          src:"../../images/road.jpg" ,
-          to:"/home/newList",
+          src: "../../images/road.jpg",
+          to: "/home/newList"
         },
         {
           id: 6,
           data: "联系我们",
           icon: "mui-icon-extra mui-icon-extra-peoples",
-          src:"../../images/newsIcon.jpg",
-          to:"/home/newList",
+          src: "../../images/newsIcon.jpg",
+          to: "/home/newList"
         }
-      ]
+      ],
+      getImg: []
     };
   },
-  methods:{
-
+  methods: {
+    requestImg() {
+      axios
+        .get(
+          "https://mockapi.eolinker.com/4VLgjtce15e8728b855c5b280bf96334eca5ff672228fed/cwh",
+          {
+            params: {
+              getImg: "homeTopBarPictures" //此处可以根据id来请求对应的数据
+            }
+          }
+        )
+        .then(response => {
+          this.getImg = response.data;
+        });
+    }
   },
+  components: {
+    lunbotu
+  }
 };
 </script>
 
@@ -114,7 +148,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.newsIcon{
+.newsIcon {
   background-image: url(../../images/newsIcon.jpg);
 }
 </style>

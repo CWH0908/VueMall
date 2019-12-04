@@ -22,27 +22,79 @@ import pictureInfo from "../src/components/pictureInfo.vue"
 //导入商品列表组件
 import shopping from "../src/components/shoppingCommnet/shopping.vue"
 
+//导入展示商品详情的路由组件
+import goodsInfo from "../src/components/shoppingCommnet/goodsInfo.vue"
+
+//导入测试用的组件
+import test from "../src/components/test.vue"
+
 Vue.use(VueRouter);
 //创建路由对象
-var router =new VueRouter({
-    routes:[
-        {path:"/",redirect:"/home"},
-        {path:"/home",component:home},
-        {path:"/vip",component:vip},
-        {path:"/shopCar",component:shopCar},
-        {path:"/search",component:search},
+var router = new VueRouter({
+    routes: [{
+            path: "/",
+            redirect: "/home"
+        },
+        {
+            path: "/home",
+            component: home
+        },
+        {
+            path: "/vip",
+            component: vip
+        },
+        {
+            path: "/shopCar",
+            component: shopCar
+        },
+        {
+            path: "/search",
+            component: search
+        },
 
-        {path:"/home/newsList",component:newsList}, 
-        {path:"/home/newsInfo/:id",component:newsInfo}, 
+        {
+            path: "/home/newsList",
+            component: newsList
+        },
+        {
+            path: "/home/newsInfo/:id",
+            component: newsInfo
+        },
 
-        {path:"/home/sharePictures",component:sharePictures}, //图片列表
-        {path:"/home/pictureInfo/:id",component:pictureInfo},//图片详情
+        {
+            path: "/home/sharePictures",
+            component: sharePictures
+        }, //图片列表
+        {
+            path: "/home/pictureInfo/:id",
+            component: pictureInfo
+        }, //图片详情
 
-        {path:"/home/shopping",component:shopping},//商品列表页面
+        {
+            path: "/home/shopping",
+            component: shopping
+        }, //商品列表页面
+        {
+            path:"/home/goodsInfo/:index",
+            name:"goodsInfo",
+            component:goodsInfo
+        },
+        {
+            path:"/test",
+            name:"test",
+            component:test
+        }
     ],
-    linkActiveClass:'highLight'
+    linkActiveClass: 'highLight'
 
 });
 
+router.beforeEach(function (to, from, next) {
+    if (to.path== "/home") {
+        // this.showGoBackButton = false; //首页不显示返回按钮
+    }
+    next();
+})
+
 //向外暴露router
-export default router
+export default router;
